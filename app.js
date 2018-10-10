@@ -10,6 +10,7 @@ if (process.env.NODE_ENV === 'development') {
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const testsRouter = require('./routes/test');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/tests', testsRouter);
 
 app.use((request, response, next) => {
   console.log(Date.now());

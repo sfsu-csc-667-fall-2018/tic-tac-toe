@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start:dev": "NODE_ENV=development DEBUG=tic-tac-toe:* nodemon ./bin/www"
+    "start:dev": "NODE_ENV=development DEBUG=tic-tac-toe:* nodemon ./bin/www",
+    "db:create:migration": "sequelize migration:generate --name ",
+    "db:migrate": "sequelize db:migrate",
+    "db:rollback": "sequelize db:migrate:undo"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

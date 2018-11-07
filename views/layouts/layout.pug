@@ -4,4 +4,9 @@ html
     title AUTHENTICATED
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    header
+      p You are user #{user.id} #{user.username}
+      p
+        a(href="/users/logout") Logout
+
     block content

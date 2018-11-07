@@ -1,24 +1,21 @@
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.createTable('users', {
+    queryInterface.createTable('test_table', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
-      password: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      username: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       createdAt: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('NOW()'),
         allowNull: false
+      },
+      testString: {
+        type: Sequelize.STRING,
+        allowNull: false
       }
     }),
-  down: queryInterface => queryInterface.dropTable('users')
+
+  down: queryInterface => queryInterface.dropTable('test_table')
 };

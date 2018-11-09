@@ -1,5 +1,19 @@
 extends ../layouts/unauthenticated
 
 block content
-  p This is the login page (maybe collapse to index?)
+  h1 Login
 
+  p
+    a(href="/users/register") Register
+
+  form(action="/users/login" method="post")
+    div
+      label(for="username") Username:
+      input(type="text", name="username")
+
+    div
+      label(for="password") Password:
+      input(type="password" name="password")
+
+    div
+      input(type="submit" value="Login")

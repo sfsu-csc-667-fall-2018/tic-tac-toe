@@ -1,4 +1,4 @@
 module.exports = {
-  extends: "airbnb-base",
-  plugins: ["json"]
+  extends: 'airbnb-base',
+  plugins: ['json']
 };

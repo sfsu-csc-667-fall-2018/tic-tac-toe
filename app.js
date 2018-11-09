@@ -3,14 +3,13 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const session = require('express-session');
-const pgSession = require('connect-pg-simple');
 
 if (process.env.NODE_ENV === 'development') {
   /* eslint-disable */
   require('dotenv').config();
   /* eslint-enable */
 }
+const sessionMiddleware = require('./config/session');
 
 const { passport } = require('./authentication/passport');
 
@@ -29,15 +28,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(
-  session({
-    store: new (pgSession(session))(),
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 }
-  })
-);
+app.use(sessionMiddleware);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());

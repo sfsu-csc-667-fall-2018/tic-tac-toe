@@ -1,0 +1,12 @@
+if owner
+  a.list-group-item.list-group-item-action.flex-column.align-items-start(href=`/games/${id}`)
+    .d-flex.justify-content-between
+      div
+        h6 Your game
+        small Waiting for players
+      small Created at #{timestamp}
+else
+  a.list-group-item.list-group-item-action.flex-column.align-items-start(href=`/games/${id}`)
+    .d-flex.justify-content-between
+      h6 Join this game
+      small Created at #{timestamp}

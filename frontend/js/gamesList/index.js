@@ -3,27 +3,30 @@
 import api from '../api';
 import socket from '../messaging';
 
-const initializeSockets = () => {
-  socket.on('games:created', data => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+import gameEntryTemplate from '../templates/gameEntry.pug';
+
+const initializeSockets = element => () => {
+  socket.on('game:created', game => {
+    // eslint-disable-next-line no-param-reassign
+    element.innerHTML = `
+      ${element.innerHTML}
+      ${gameEntryTemplate(game)}
+    `;
   });
 };
 
 const renderGames = element => ({ games, currentUserId }) => {
-  games.forEach(entry => {
-    const p = document.createElement('p');
-    p.innerText = `${currentUserId} ${entry}`;
-
-    element.appendChild(p);
-  });
+  // eslint-disable-next-line no-param-reassign
+  element.innerHTML = games
+    .map(game => gameEntryTemplate(game, currentUserId))
+    .join('');
 };
 
 const initializeGamesList = element => {
   api
     .getGamesList()
     .then(renderGames(element))
-    .then(initializeSockets);
+    .then(initializeSockets(element));
 };
 
 export default initializeGamesList;

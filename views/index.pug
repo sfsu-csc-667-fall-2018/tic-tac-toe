@@ -1,8 +1,12 @@
 extends layouts/unauthenticated
 
 block content
-  p This is the unauthenticated index
-  p
-    a(href="/users/login") Login
-    br
-    a(href="/users/register") Register
+  main(role='main')
+    section.jumbotron.text-center
+      .container
+        h1.jumbotron-heading Tic Tac Toe
+        p.lead.text-muted Win now.
+        p
+          a.btn.btn-primary.mr-2(href="/users/login") Login
+          a.btn.btn-secondary(href="/users/register") Register
+

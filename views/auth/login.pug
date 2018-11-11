@@ -1,19 +1,19 @@
 extends ../layouts/unauthenticated
 
 block content
-  h1 Login
+  main(role='main')
+    section.jumbotron
+      .container
+        h1 Login
 
-  p
-    a(href="/users/register") Register
+        form(action="/users/login" method="post")
+          .form-group
+            label(for="username") Username:
+            input.form-control(type="text", name="username")
 
-  form(action="/users/login" method="post")
-    div
-      label(for="username") Username:
-      input(type="text", name="username")
+          .form-group
+            label(for="password") Password:
+            input.form-control(type="password" name="password")
 
-    div
-      label(for="password") Password:
-      input(type="password" name="password")
-
-    div
-      input(type="submit" value="Login")
+          button.btn.btn-primary.mr-2(type='submit') Submit
+          a.btn.btn-secondary(href="/users/register") Register

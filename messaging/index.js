@@ -12,13 +12,18 @@ const init = server => {
 const userSockets = {};
 
 io.on('connection', socket => {
-  const { user: userId } = socket.request.session.passport;
+  try {
+    const { user: userId } = socket.request.session.passport;
 
-  userSockets[userId] = socket;
+    userSockets[userId] = socket;
 
-  socket.on('disconnect', () => {
-    delete userSockets[userId];
-  });
+    socket.on('disconnect', () => {
+      delete userSockets[userId];
+    });
+  } catch (_) {
+    // eslint-disable-next-line no-console
+    console.log('Failed to set up socket (probably missing auth)');
+  }
 });
 
 module.exports = { init, io, userSockets };

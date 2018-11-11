@@ -2,7 +2,7 @@ doctype html
 html
   head
     title AUTHENTICATED
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/css/style.css')
   body
     header
       p You are user #{user.id} #{user.username}
@@ -11,6 +11,4 @@ html
 
     block content
 
-
-    script(src="/socket.io/socket.io.js")
     block scripts

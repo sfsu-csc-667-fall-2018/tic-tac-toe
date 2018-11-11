@@ -7,7 +7,7 @@ router.get('/', (_, response) => {
   response.render('index');
 });
 
-router.get('/lobby', isAuthenticated, (_, response) => {
+router.get('/lobby', isAuthenticated, (request, response) => {
   response.render('lobby/index');
 });
 

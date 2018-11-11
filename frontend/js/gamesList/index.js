@@ -10,10 +10,10 @@ const initializeSockets = () => {
   });
 };
 
-const renderGames = element => gamesList => {
-  gamesList.forEach(entry => {
+const renderGames = element => ({ games, currentUserId }) => {
+  games.forEach(entry => {
     const p = document.createElement('p');
-    p.innerText = entry;
+    p.innerText = `${currentUserId} ${entry}`;
 
     element.appendChild(p);
   });

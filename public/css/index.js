@@ -81,19 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./frontend/js/game.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./frontend/css/index.scss");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./frontend/js/game.js":
-/*!*****************************!*\
-  !*** ./frontend/js/game.js ***!
-  \*****************************/
+/***/ "./frontend/css/index.scss":
+/*!*********************************!*\
+  !*** ./frontend/css/index.scss ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./frontend/js/game.js?");
+eval("module.exports = \"/css/index.css\";\n\n//# sourceURL=webpack:///./frontend/css/index.scss?");
 
 /***/ })
 

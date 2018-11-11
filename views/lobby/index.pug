@@ -3,10 +3,17 @@ extends ../layouts/layout
 block content
   h1 Welcome to tic tac toe
 
-  div.game-list
-  div
-    div.chat-display
-    input.chat-message
+  .row
+    .col
+      div
+        button.btn.btn-dark(type='button') Create Game
+
+      .game-list.list-group
+    .col
+      .form-group
+        .chat-display.border.border-secondary.rounded
+      .form-group
+        input.form-control.chat-message(placeholder='Message...')
 
 block scripts
   script(src="/js/lobby.js")

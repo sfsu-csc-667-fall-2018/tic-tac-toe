@@ -1,21 +1,16 @@
 /* eslint-env browser */
-
 import api from '../api';
 import socket from '../messaging';
 
-const chatElement = (text, className) => {
-  const element = document.createElement('div');
-
-  element.classList.add(className);
-  element.innerText = text;
-
-  return element;
-};
+import chatElementTemplate from '../templates/chatEntry.pug';
 
 const initializeSockets = (roomIdentifier, chatDisplayElement) => {
-  socket.on(`chat:${roomIdentifier}`, ({ username, message }) => {
-    chatDisplayElement.appendChild(chatElement(username, 'username'));
-    chatDisplayElement.appendChild(chatElement(message, 'message'));
+  socket.on(`chat:${roomIdentifier}`, message => {
+    // eslint-disable-next-line no-param-reassign
+    chatDisplayElement.innerHTML = `
+      ${chatDisplayElement.innerHTML}
+      ${chatElementTemplate(message)}
+    `;
   });
 };
 

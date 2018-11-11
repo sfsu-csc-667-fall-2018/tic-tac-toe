@@ -2,13 +2,19 @@ doctype html
 html
   head
     title AUTHENTICATED
-    link(rel='stylesheet', href='/css/style.css')
+    link(href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO", crossorigin="anonymous")
+    link(rel='stylesheet', href='/css/index.css')
   body
-    header
-      p You are user #{user.id} #{user.username}
-      p
-        a(href="/users/logout") Logout
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      a.navbar-brand(href='/lobby') #tic-tac-toe
 
-    block content
+      .collapse.navbar-collapse
+        .navbar-nav
+          a.nav-item.nav-link(href='/lobby') Lobby
+          a.nav-item.nav-link(href='/users/logout') Logout
+        span.navbar-text #{user.id} #{user.username}
+
+    .container
+      block content
 
     block scripts

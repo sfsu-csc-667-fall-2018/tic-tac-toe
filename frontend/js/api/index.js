@@ -22,10 +22,13 @@ const requestConfiguration = (body = {}, method) => {
 
   return config;
 };
+
 const request = (endpoint, body, method = 'post') =>
   fetch(endpoint, requestConfiguration(body, method)).then(checkStatus);
 
+const jsonify = response => response.json();
+
 export default {
   sendLobbyChat: message => request('/api/chat/lobby', { message }),
-  getGamesList: () => request('/api/games', {}, 'get')
+  getGamesList: () => request('/api/games', {}, 'get').then(jsonify)
 };

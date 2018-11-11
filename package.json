@@ -8,7 +8,9 @@
     "db:create:migration": "sequelize migration:generate --name ",
     "db:migrate": "sequelize db:migrate",
     "db:rollback": "sequelize db:migrate:undo",
-    "postinstall": "sequelize db:migrate"
+    "postinstall": "sequelize db:migrate",
+    "js:build": "webpack --config config/webpack.config.js",
+    "js:dev": "webpack --watch --config config/webpack.config.js"
   },
   "husky": {
     "hooks": {
@@ -16,21 +18,26 @@
     }
   },
   "lint-staged": {
-    "*.{js,json}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
+    "ignore": [
+      "public/**/**"
     ],
-    "*.css": [
-      "stylelint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "*.scss": [
-      "stylelint --syntax=scss --fix",
-      "prettier --write",
-      "git add"
-    ]
+    "linters": {
+      "*.{js,json}": [
+        "eslint --fix",
+        "prettier --write",
+        "git add"
+      ],
+      "*.css": [
+        "stylelint --fix",
+        "prettier --write",
+        "git add"
+      ],
+      "*.scss": [
+        "stylelint --syntax=scss --fix",
+        "prettier --write",
+        "git add"
+      ]
+    }
   },
   "dependencies": {
     "bcrypt": "^3.0.2",
@@ -48,9 +55,13 @@
     "pug": "2.0.0-beta11",
     "sequelize": "^4.39.0",
     "sequelize-cli": "^4.1.1",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "babel-loader": "^8.0.4",
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -60,6 +71,8 @@
     "nodemon": "^1.18.4",
     "prettier": "^1.14.3",
     "stylelint": "^9.7.1",
-    "stylelint-config-standard": "^18.2.0"
+    "stylelint-config-standard": "^18.2.0",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
   }
 }

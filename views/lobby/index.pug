@@ -1,5 +1,12 @@
 extends ../layouts/layout
 
 block content
-  p This is the authenticated index
+  h1 Welcome to tic tac toe
 
+  div.game-list
+  div
+    div.chat-display
+    input.chat-message
+
+block scripts
+  script(src="/js/lobby.js")

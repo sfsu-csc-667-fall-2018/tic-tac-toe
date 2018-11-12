@@ -6,11 +6,12 @@ const { io } = require('../../messaging');
 
 const router = express.Router();
 
-router.post('/lobby', isAuthenticated, (request, response) => {
+router.post('/:roomIdentifier', isAuthenticated, (request, response) => {
+  const { roomIdentifier } = request.params;
   const { username } = request.user;
   const { message } = request.body;
 
-  io.emit('chat:lobby', {
+  io.emit(`chat:${roomIdentifier}`, {
     username,
     message,
     timestamp: moment().format('HH:mm:ss')

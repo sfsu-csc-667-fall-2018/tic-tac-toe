@@ -1,7 +1,22 @@
 extends ../layouts/layout
 
 block content
-  p This is the game page for #{id}
+  input.game-id(type='hidden', value=id)
+
+  .row
+    .col
+      .game-area
+        each row in [0, 1, 2]
+          .game-row
+            each col in [0, 1, 2]
+              .space(data-space-number=(3 * row + col))= 3 * row + col
+
+      .player-info
+    .col
+      .form-group
+        .chat-display.border.border-secondary.rounded
+      .form-group
+        input.form-control.chat-message(placeholder='Message...')
 
 block scripts
   script(src="/js/game.js")

@@ -29,6 +29,9 @@ const request = (endpoint, body, method = 'post') =>
 const jsonify = response => response.json();
 
 export default {
-  sendLobbyChat: message => request('/api/chat/lobby', { message }),
-  getGamesList: () => request('/api/games', {}, 'get').then(jsonify)
+  sendChat: (channel, message) => request(`/api/chat/${channel}`, { message }),
+  getGamesList: () => request('/api/games', {}, 'get').then(jsonify),
+  getGameInfo: gameId =>
+    request(`/api/games/${gameId}/info`, {}, 'get').then(jsonify),
+  createGame: () => request('/api/games/create', {}, 'get')
 };

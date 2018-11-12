@@ -13,6 +13,10 @@ const initializeSockets = element => () => {
       ${gameEntryTemplate(game)}
     `;
   });
+
+  socket.on('game:full', ({ gameId }) => {
+    document.querySelector(`[data-id="${gameId}"]`).remove();
+  });
 };
 
 const renderGames = element => ({ games, currentUserId }) => {

@@ -1,2 +1,16 @@
 .chat-display {
   height: 300px; }
+
+.game-area .game-row {
+  display: flex;
+  flex-direction: row; }
+  .game-area .game-row .space {
+    flex: 1;
+    height: 200px;
+    border: 1px solid #bbb; }
+
+.player-info {
+  padding-top: 5px;
+  display: flex; }
+  .player-info .media {
+    flex: 1; }

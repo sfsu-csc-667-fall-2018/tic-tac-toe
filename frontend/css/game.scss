@@ -1,0 +1,21 @@
+.game-area {
+  .game-row {
+    display: flex;
+    flex-direction: row;
+
+    .space {
+      flex: 1;
+      height: 200px;
+      border: 1px solid #bbb;
+    }
+  }
+}
+
+.player-info {
+  padding-top: 5px;
+  display: flex;
+
+  .media {
+    flex: 1;
+  }
+}

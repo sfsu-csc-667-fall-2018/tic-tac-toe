@@ -14,12 +14,12 @@ const initializeSockets = (roomIdentifier, chatDisplayElement) => {
   });
 };
 
-const chatInputHandler = event => {
+const chatInputHandler = roomIdentifier => event => {
   const { target, keyCode } = event;
 
   if (keyCode === 13) {
     api
-      .sendLobbyChat(target.value)
+      .sendChat(roomIdentifier, target.value)
       .then(_ => {
         target.value = '';
       })
@@ -35,7 +35,10 @@ const initializeChat = (
   chatDisplayElement,
   roomIdentifier
 ) => {
-  chatInputElement.addEventListener('keydown', chatInputHandler);
+  chatInputElement.addEventListener(
+    'keydown',
+    chatInputHandler(roomIdentifier)
+  );
 
   initializeSockets(roomIdentifier, chatDisplayElement);
 };
